@@ -1,0 +1,21 @@
+upstream fuerza_libertaria {
+  server unix:///home/vizcay/applications/fuerza_libertaria/shared/tmp/sockets/puma.sock;
+}
+
+server {
+  listen 80 default;
+  server_name _;
+  root /home/vizcay/applications/fuerza_libertaria/current/public;
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  location / {
+    proxy_set_header Host $host;
+    proxy_pass http://fuerza_libertria;
+    proxy_ignore_client_abort on;
+  }
+}

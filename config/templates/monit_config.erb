@@ -1,0 +1,5 @@
+check process fuerza_libertaria
+  with pidfile "/home/vizcay/applications/fuerza_libertaria/shared/tmp/pids/puma.pid"
+  start program = "/usr/bin/sudo -iu vizcay /bin/bash -c 'cd $HOME/applications/fuerza_libertaria/current && $HOME/.rbenv/bin/rbenv exec bundle exec puma --environment production'"
+  stop program = "/usr/bin/sudo -iu vizcay /bin/bash -c 'cd $HOME/applications/fuerza_libertaria/current && $HOME/.rbenv/bin/rbenv exec bundle exec pumactl --pidfile $HOME/applications/fuerza_libertaria/shared/puma.pid stop'"
+  if 5 restarts with 5 cycles then timeout
