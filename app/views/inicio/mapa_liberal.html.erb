@@ -1,5 +1,16 @@
-<%= render 'common/header', subtitle: 'El mapa liberal Argentino' %>
+<%= render 'common/navbar' %>
 
 <section>
-  <div id="map"></div>
+  <div class="columns">
+    <div class="column is-three-quarters">
+      <div id="map"></div>
+    </div>
+    <div class="column" style="-background-color: #ffdd57;">
+      <br />
+      <h2 class="title is-4 has-text-centered"><%= Usuario.count %> Libertarios</h2>
+      <p>El Mapa Liberal es nuestro esfuerzo por conectar y potenciar a los liberales de Argentina.</p>
+      <br />
+      <p>Utilizalo para conectar con los liberales de tu ciudad o zona.</p>
+    </div>
+  </div>
 </section>
