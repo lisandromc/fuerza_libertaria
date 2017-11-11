@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/vizcay/fuerza_libertaria.git"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/vizcay/applications/fuerza_libertaia"
+set :deploy_to, "/home/vizcay/applications/fuerza_libertaria"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
