@@ -13,6 +13,7 @@ gem 'geocoder', '1.4.4'
 gem 'gon', '6.1.0'
 gem 'bulma-rails', '~> 0.6.1'
 
+gem 'clearance', '1.16.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
