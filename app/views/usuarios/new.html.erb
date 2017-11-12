@@ -1,93 +1,96 @@
 <%= render 'common/navbar' %>
 
 <div class="container">
-  <h1 class="title">Registrarme</h1>
-  <h2 class="subtitle">Únete a libertarios comprometidos con la defensa de las ideas de la libertad</h2>
-  <hr />
-
-  <% if @usuario.errors.any? %>
-    <div class="notification is-danger">
-      <button class="delete"></button>
-      Se produjeron errores en el formulario, por favor revísalo e intenta nuevamente. Gracias!
-    </div>
-  <% end %>
-
-  <%= form_for(@usuario) do |f| %>
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">Nombre</label>
-          <div class="control has-icons-left">
-            <%= f.text_field(:nombre, class: 'input', required: true, placeholder: 'Nombre') %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-user"></i>
-            </span>
-          </div>
-          <% if @usuario.errors[:nombre].any? %>
-            <li class="help is-danger"><%= @usuario.errors[:nombre].join(', ') %></li>
-          <% end %>
-        </div>
-        <div class="field">
-          <label class="label">Domicilio</label>
-          <div class="control has-icons-left">
-            <%= f.text_field(:domicilio, class: 'input', placeholder: 'Domicilio') %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-address-card-o"></i>
-            </span>
-          </div>
-          <% if @usuario.errors[:domicilio].any? %>
-            <li class="help is-danger"><%= @usuario.errors[:domicilio].join(', ') %></li>
-          <% end %>
-        </div>
-        <div class="field">
-          <label class="label">Localidad</label>
-          <div class="control has-icons-left">
-            <%= f.text_field(:localidad, class: 'input', required: true, placeholder: 'Localidad') %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-map-marker"></i>
-            </span>
-          </div>
-          <% if @usuario.errors[:localidad].any? %>
-            <li class="help is-danger"><%= @usuario.errors[:localidad].join(', ') %></li>
-          <% end %>
-        </div>
-      </div>
-      <div class="column">
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control has-icons-left">
-            <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-envelope"></i>
-            </span>
-          </div>
-          <% if @usuario.errors[:email].any? %>
-            <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
-          <% end %>
-        </div>
-        <div class="field">
-          <label class="label">Móvil</label>
-          <div class="control has-icons-left">
-            <%= f.email_field(:movil, class: 'input', placeholder: 'Móvil') %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-mobile"></i>
-            </span>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Configuración</label>
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox">
-              Quiero aparecer en el Mapa Liberal
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="content">
+    <h1 class="title" style="margin-top: 20px">Registrarme</h1>
     <hr />
-    <div class="has-text-right">
-      <button type="submit" class="button is-link is-medium">Enviar solicitud</button>
-    </div>
-  <% end %>
+
+    <h2 class="subtitle is-4">Únete a un grupo de libertarios comprometidos con la defensa de las ideas de la libertad</h2>
+
+    <% if @usuario.errors.any? %>
+      <div class="notification is-danger">
+        <button class="delete"></button>
+        Se produjeron errores en el formulario, por favor revísalo e intenta nuevamente. Gracias!
+      </div>
+    <% end %>
+
+    <%= form_for(@usuario) do |f| %>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Nombre</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:nombre, class: 'input', required: true, placeholder: 'Nombre') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+            <% if @usuario.errors[:nombre].any? %>
+              <li class="help is-danger"><%= @usuario.errors[:nombre].join(', ') %></li>
+            <% end %>
+          </div>
+          <div class="field">
+            <label class="label">Domicilio</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:domicilio, class: 'input', placeholder: 'Domicilio') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-address-card-o"></i>
+              </span>
+            </div>
+            <% if @usuario.errors[:domicilio].any? %>
+              <li class="help is-danger"><%= @usuario.errors[:domicilio].join(', ') %></li>
+            <% end %>
+          </div>
+          <div class="field">
+            <label class="label">Localidad</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:localidad, class: 'input', required: true, placeholder: 'Localidad') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-map-marker"></i>
+              </span>
+            </div>
+            <% if @usuario.errors[:localidad].any? %>
+              <li class="help is-danger"><%= @usuario.errors[:localidad].join(', ') %></li>
+            <% end %>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left">
+              <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+            <% if @usuario.errors[:email].any? %>
+              <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
+            <% end %>
+          </div>
+          <div class="field">
+            <label class="label">Móvil</label>
+            <div class="control has-icons-left">
+              <%= f.email_field(:movil, class: 'input', placeholder: 'Móvil') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-mobile"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Configuración</label>
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox">
+                Quiero aparecer en el Mapa Liberal
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="has-text-right">
+        <button type="submit" class="button is-link is-medium">Enviar solicitud</button>
+      </div>
+    <% end %>
+  </div>
 </div>
