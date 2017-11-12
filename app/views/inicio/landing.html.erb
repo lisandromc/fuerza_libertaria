@@ -3,6 +3,12 @@
 
 <section class="section">
   <div class="container">
+    <% if flash[:notice] %>
+      <div class="notification is-link">
+        <button class="delete"></button>
+        <p class="has-text-centered"><%= flash[:notice] %></p>
+      </div>
+    <% end %>
     <div class="content">
       <p class="is-size-4">
         Fuerza Libertaria es un grupo de acción que surgió de forma espontánea en las redes, siendo la misión en común que nos une la de impulsar las ideas de la libertad en la Argentina y, en el mediano plazo, derivar en la creación de un partido político que nos represente.
