@@ -3,7 +3,15 @@ require 'csv'
 class Usuario < ApplicationRecord
   include Clearance::User
 
-  validates_presence_of :nombre, :email
+  validates_presence_of :nombre, :email, :localidad
+
+  validates :nombre, uniqueness: true
+
+  def geolocate
+    if response = Geocoder.search("#{domicilio}, #{localidad}, Argentina")[0]
+      update(latitude: response.coordinates[0], longitude: response.coordinates[1])
+    end
+  end
 
   def self.importar_afiliados
     CSV.parse(File.read('afiliados.csv')).each do |record|
@@ -14,9 +22,7 @@ class Usuario < ApplicationRecord
 
   def self.geolocate_all
     Usuario.all.each do |usuario|
-      if response = Geocoder.search("#{usuario.domicilio}, #{usuario.localidad}, Argentina")[0]
-        usuario.update(latitude: response.coordinates[0], longitude: response.coordinates[1])
-      end
+      usuario.geolocate
     end
   end
 
