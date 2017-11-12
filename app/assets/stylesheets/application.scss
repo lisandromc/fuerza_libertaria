@@ -15,3 +15,12 @@
  */
 
 @import "bulma";
+
+nav.navbar {
+  border-bottom: 1px solid black;
+
+  .navbar-brand a {
+    font-family: Montserrat;
+    font-size: 20px;
+  }
+}
