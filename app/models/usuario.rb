@@ -34,7 +34,7 @@ class Usuario < ApplicationRecord
   end
 
   def self.map_locations_json
-    Usuario.all.map { |usuario| { lat: usuario.latitude, lng: usuario.longitude } }
+    Usuario.all.select(&:activo_mapa_liberal).map { |usuario| { lat: usuario.latitude, lng: usuario.longitude } }
   end
 
   private
