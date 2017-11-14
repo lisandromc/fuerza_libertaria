@@ -18,7 +18,7 @@
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Nombre</label>
+            <label class="label">Nombre*</label>
             <div class="control has-icons-left">
               <%= f.text_field(:nombre, class: 'input', required: true, placeholder: 'Nombre') %>
               <span class="icon is-small is-left">
@@ -28,6 +28,47 @@
             <% if @usuario.errors[:nombre].any? %>
               <li class="help is-danger"><%= @usuario.errors[:nombre].join(', ') %></li>
             <% end %>
+          </div>
+          <div class="field">
+            <label class="label">Email*</label>
+            <div class="control has-icons-left">
+              <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+            <% if @usuario.errors[:email].any? %>
+              <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
+            <% end %>
+          </div>
+          <div class="field">
+            <label class="label">Profesión</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:profesion, class: 'input', placeholder: 'Profesión') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-briefcase"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Áreas de conocimiento</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:areas_conocimiento, class: 'input', placeholder: 'Tecnología, marketing, marketing') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-eye"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Móvil</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:movil, class: 'input', placeholder: 'Móvil') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-mobile"></i>
+              </span>
+            </div>
           </div>
           <div class="field">
             <label class="label">Domicilio</label>
@@ -42,7 +83,7 @@
             <% end %>
           </div>
           <div class="field">
-            <label class="label">Localidad</label>
+            <label class="label">Localidad*</label>
             <div class="control has-icons-left">
               <%= f.text_field(:localidad, class: 'input', required: true, placeholder: 'Localidad') %>
               <span class="icon is-small is-left">
@@ -53,34 +94,11 @@
               <li class="help is-danger"><%= @usuario.errors[:localidad].join(', ') %></li>
             <% end %>
           </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left">
-              <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
-              <span class="icon is-small is-left">
-                <i class="fa fa-envelope"></i>
-              </span>
-            </div>
-            <% if @usuario.errors[:email].any? %>
-              <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
-            <% end %>
-          </div>
-          <div class="field">
-            <label class="label">Móvil</label>
-            <div class="control has-icons-left">
-              <%= f.email_field(:movil, class: 'input', placeholder: 'Móvil') %>
-              <span class="icon is-small is-left">
-                <i class="fa fa-mobile"></i>
-              </span>
-            </div>
-          </div>
           <div class="field">
             <label class="label">Configuración</label>
             <div class="control">
               <label class="checkbox">
-                <input type="checkbox">
+                <%= f.check_box(:activo_mapa_liberal) %>
                 Quiero aparecer en el Mapa Liberal
               </label>
             </div>

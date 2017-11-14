@@ -7,7 +7,6 @@ class UsuariosController < ApplicationController
 
   def create
     @usuario = Usuario.new(usuario_params)
-    @usuario.password = SecureRandom.hex
     if @usuario.save
       @usuario.geolocate
       redirect_to root_path, notice: 'Gracias por registrarte, pronto nos pondremos en contacto!'
@@ -19,6 +18,7 @@ class UsuariosController < ApplicationController
   private
 
   def usuario_params
-    params.require(:usuario).permit(:nombre, :email, :movil, :domicilio, :localidad)
+    params.require(:usuario).permit(:nombre, :email, :movil, :domicilio, :localidad,
+                                    :profesion, :areas_conocimiento, :activo_mapa_liberal)
   end
 end
