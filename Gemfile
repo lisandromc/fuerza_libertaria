@@ -12,8 +12,7 @@ gem 'gmaps4rails', '2.1.2'
 gem 'geocoder', '1.4.4'
 gem 'gon', '6.1.0'
 gem 'bulma-rails', '~> 0.6.1'
-
-gem 'clearance', '1.16.1'
+gem 'bcrypt', '3.1.11'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
