@@ -4,6 +4,7 @@ class Usuario < ApplicationRecord
   validates :nombre, :email, :localidad, presence: true
 
   validates :nombre, uniqueness: true, length: { maximum: 50 }
+  validates :dni, numericality: { only_integer: true, greater_than: 0, less_than: 60_000_000, allow_nil: true }
   validates :email, uniqueness: true, length: { maximum: 50 }
   validates :movil, length: { maximum: 30 }
   validates :domicilio, length: { maximum: 50 }

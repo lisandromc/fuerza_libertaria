@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109010320) do
+ActiveRecord::Schema.define(version: 20171115015502) do
 
   create_table "usuarios", force: :cascade do |t|
     t.string "email", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171109010320) do
     t.boolean "activo_mapa_liberal", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "dni"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["nombre"], name: "index_usuarios_on_nombre"
   end

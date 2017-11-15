@@ -59,6 +59,15 @@
               </span>
             </div>
           </div>
+          <div class="field">
+            <label class="label">Configuración</label>
+            <div class="control">
+              <label class="checkbox">
+                <%= f.check_box(:activo_mapa_liberal) %>
+                Quiero aparecer en el Mapa Liberal
+              </label>
+            </div>
+          </div>
         </div>
         <div class="column">
           <div class="field">
@@ -71,11 +80,23 @@
             </div>
           </div>
           <div class="field">
+            <label class="label">DNI</label>
+            <div class="control has-icons-left">
+              <%= f.text_field(:dni, class: 'input', pattern: '[0-9]{7,8}',placeholder: 'DNI') %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-address-card-o"></i>
+              </span>
+            </div>
+            <% if @usuario.errors[:dni].any? %>
+              <li class="help is-danger"><%= @usuario.errors[:dni].join(', ') %></li>
+            <% end %>
+          </div>
+          <div class="field">
             <label class="label">Domicilio</label>
             <div class="control has-icons-left">
               <%= f.text_field(:domicilio, class: 'input', placeholder: 'Domicilio') %>
               <span class="icon is-small is-left">
-                <i class="fa fa-address-card-o"></i>
+                <i class="fa fa-home"></i>
               </span>
             </div>
             <% if @usuario.errors[:domicilio].any? %>
@@ -94,15 +115,12 @@
               <li class="help is-danger"><%= @usuario.errors[:localidad].join(', ') %></li>
             <% end %>
           </div>
-          <div class="field">
-            <label class="label">Configuración</label>
-            <div class="control">
-              <label class="checkbox">
-                <%= f.check_box(:activo_mapa_liberal) %>
-                Quiero aparecer en el Mapa Liberal
-              </label>
-            </div>
-          </div>
+          <p class="help">
+            - El DNI y Domicilio son opcionales para unirte al grupo, pero necesarios para la presentación de adherentes en la
+            junta electora, paso requerido para la personería jurídica del partido político.<br />
+            - Profesión y áreas de conocimiento son opcionales, pero nos ayudarán a saber con que expertise cuentas para
+            colaborar activamente.
+          </p>
         </div>
       </div>
       <hr />
