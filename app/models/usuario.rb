@@ -22,6 +22,10 @@ class Usuario < ApplicationRecord
     end
   end
 
+  def localizar_en_mapa?
+    activo_mapa_liberal && latitude.present? && longitude.present?
+  end
+
   def self.importar_afiliados
     CSV.parse(File.read('afiliados.csv')).each do |record|
       Usuario.create(email: record[1], nombre: record[2], domicilio: record[4], localidad: record[5], movil: record[6])
@@ -35,7 +39,7 @@ class Usuario < ApplicationRecord
   end
 
   def self.map_locations_json
-    Usuario.all.select(&:activo_mapa_liberal).map { |usuario| { lat: usuario.latitude, lng: usuario.longitude } }
+    Usuario.all.select(&:localizar_en_mapa?).map { |usuario| { lat: usuario.latitude, lng: usuario.longitude } }
   end
 
   private
