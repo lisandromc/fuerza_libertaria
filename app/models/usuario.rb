@@ -12,9 +12,19 @@ class Usuario < ApplicationRecord
   validates :profesion, length: { maximum: 50 }
   validates :areas_conocimiento, length: { maximum: 100 }
 
-  #has_secure_password
+  has_secure_password validations: false
+  has_secure_token :reset_token
 
   after_initialize :after_initialize
+
+  def prepare_reset_token
+    regenerate_reset_token
+    update_attribute(:reset_token_expire, 2.hour.from_now)
+  end
+
+  def reset_token_valid?(token)
+    reset_token.present? && reset_token == token && Time.zone.now < reset_token_expire
+  end
 
   def geolocate
     if response = Geocoder.search("#{domicilio}, #{localidad}, Argentina")[0]
