@@ -16,6 +16,28 @@ class UsuariosController < ApplicationController
     end
   end
 
+  def edit
+    if !sesion_iniciada? || usuario_actual.id.to_s != params[:id]
+      redirect_to root_path, alert: 'No tienes permisos para realizar esta acción.'
+    else
+      @usuario = Usuario.find(params[:id])
+      render 'edit'
+    end
+  end
+
+  def update
+    if !sesion_iniciada? || usuario_actual.id.to_s != params[:id]
+      redirect_to root_path, alert: 'No tienes permisos para realizar esta acción.'
+    else
+      @usuario = Usuario.find(params[:id])
+      if @usuario.update(usuario_params)
+        redirect_to edit_usuario_path(@usuario), notice: 'Perfil actualizado exitosamente.'
+      else
+        render 'edit'
+      end
+    end
+  end
+
   def send_reset_password_by_email
     @usuario = Usuario.find_by(email: params[:email])
     if @usuario

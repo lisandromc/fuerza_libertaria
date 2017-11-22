@@ -21,23 +21,17 @@
         <a href="<%= mapa_liberal_path %>" class="navbar-item">
           <i class="fa fa-globe"></i>&nbsp;Mapa Liberal
         </a>
-        <%# <a href="<%= proyectos_path %1>" class="navbar-item"> %>
-        <%#   <i class="fa fa-bolt"></i>&nbsp;Proyectos %>
-        <%# </a> %>
         <a href="https://www.facebook.com/groups/137682480320087/" target="_blank" class="navbar-item">
           <i class="fa fa-facebook-square"></i>&nbsp;Facebook
         </a>
-        <%# <a class="navbar-item"> %>
-        <%#   <i class="fa fa-sign-in"></i>&nbsp;Ingresar %>
-        <%# </a> %>
         <% if usuario_actual %>
           <div href="#" class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               <i class="fa fa-user"></i>&nbsp;<%= usuario_actual.nombre %>
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-                Perfil
+              <a href="<%= edit_usuario_path(usuario_actual) %>" class="navbar-item">
+                Editar perfil
               </a>
               <hr class="navbar-divider">
               <a href="<%= sesion_cerrar_path %>" class="navbar-item">
