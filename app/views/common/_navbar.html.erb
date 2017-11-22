@@ -10,9 +10,11 @@
         <a href="/" class="navbar-item">
           <i class="fa fa-book"></i>&nbsp;Manifiesto
         </a>
-        <a href="<%= unirme_path %>" class="navbar-item">
-          <i class="fa fa-user-plus"></i>&nbsp;Unirme
-        </a>
+        <% unless usuario_actual %>
+          <a href="<%= unirme_path %>" class="navbar-item">
+            <i class="fa fa-user-plus"></i>&nbsp;Unirme
+          </a>
+        <% end %>
         <a href="<%= comunicacion_path %>" _href="https://join.slack.com/t/fuerza-libertaria/shared_invite/enQtMjY3MjYxNDkxMzk0LTE0ZGRiZjc3M2RhMzMxMDY0YjY0MzQwZTVkMzM2OWQ4YjAzMzg5YTQ2Y2Q4NTJjNWE1ODFlY2Y5MTY1Mzg0NGQ" class="navbar-item">
           <i class="fa fa-users"></i>&nbsp;Comunicación
         </a>
@@ -28,6 +30,63 @@
         <%# <a class="navbar-item"> %>
         <%#   <i class="fa fa-sign-in"></i>&nbsp;Ingresar %>
         <%# </a> %>
+        <% if usuario_actual %>
+          <div href="#" class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              <i class="fa fa-user"></i>&nbsp;<%= usuario_actual.nombre %>
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                Perfil
+              </a>
+              <hr class="navbar-divider">
+              <a href="<%= sesion_cerrar_path %>" class="navbar-item">
+                Cerrar sesión
+              </a>
+            </div>
+          </div>
+        <% else %>
+          <div href="#" class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              <i class="fa fa-user"></i>&nbsp;Iniciar sesión
+            </a>
+            <div id="iniciar_sesion" class="navbar-dropdown is-right">
+              <form action="<%= sesion_iniciar_path %>" method="post">
+                <%= hidden_field_tag(:authenticity_token, form_authenticity_token) %>
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="iniciar_sesion_email" name="email" class="input" type="email" required placeholder="Email">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-envelope"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input name="password" class="input" type="password" required placeholder="Password">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="columns">
+                    <div class="column">
+                      <p>
+                        <a id="reset_password_by_email" href="#">Restablecer</a>
+                      </p>
+                    </div>
+                    <div class="column">
+                      <div class="control has-text-right">
+                        <button type="submit" class="button is-link is-normal">Enviar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
