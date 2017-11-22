@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+  <div class="notification is-link is-vcentered">
+    <button class="delete"></button>
+    <p class="has-text-centered"><%= flash[:notice] %></p>
+  </div>
+<% end %>
+<% if flash[:alert] %>
+  <div class="notification is-danger">
+    <button class="delete"></button>
+    <p class="has-text-centered"><%= flash[:alert] %></p>
+  </div>
+<% end %>
+<div id="notification" class="notification is-link is-hidden">
+  <button class="delete"></button>
+  <p class="has-text-centered"></p>
+</div>

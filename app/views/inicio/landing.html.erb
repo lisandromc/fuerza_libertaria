@@ -3,12 +3,8 @@
 
 <section class="section">
   <div class="container">
-    <% if flash[:notice] %>
-      <div class="notification is-link">
-        <button class="delete"></button>
-        <p class="has-text-centered"><%= flash[:notice] %></p>
-      </div>
-    <% end %>
+    <%= render('common/notifications') %>
+
     <div class="content">
       <p class="is-size-4">
         Somos un <strong>grupo de acción</strong> que surgió de forma espontánea en las redes, siendo la misión en común que nos une la de <strong>impulsar activamente</strong> las ideas de la <strong>libertad</strong> en la Argentina y, en un futuro próximo, concretar la creación de un <strong>partido político</strong> que nos represente.
