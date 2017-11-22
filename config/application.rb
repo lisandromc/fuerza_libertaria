@@ -27,5 +27,14 @@ module FuerzaLibertaria
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      user_name:            'fuerza.libertaria.arg@gmail.com',
+      password:             Rails.application.secrets.gmail_password,
+      authentication:       :login,
+      enable_starttls_auto: true }
   end
 end
