@@ -34,6 +34,12 @@
                 Editar perfil
               </a>
               <hr class="navbar-divider">
+              <% if usuario_actual.administrador %>
+                <a href="<%= usuarios_path %>" class="navbar-item">
+                  Administrar usuarios
+                </a>
+                <hr class="navbar-divider"/>
+              <% end %>
               <a href="<%= sesion_cerrar_path %>" class="navbar-item">
                 Cerrar sesión
               </a>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'sesion/iniciar'
   get 'sesion/cerrar'
 
-  resources :usuarios, only: [:new, :create, :edit, :update] do
+  resources :usuarios, only: [:index, :new, :create, :edit, :update] do
     collection do
       post 'send_reset_password_by_email'
       get 'reset_password_by_email'

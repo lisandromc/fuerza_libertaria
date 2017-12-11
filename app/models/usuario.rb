@@ -11,6 +11,7 @@ class Usuario < ApplicationRecord
   validates :localidad, length: { maximum: 100 }
   validates :profesion, length: { maximum: 50 }
   validates :areas_conocimiento, length: { maximum: 100 }
+  validates :administrador, inclusion: [true, false]
 
   has_secure_password validations: false
   has_secure_token :reset_token
@@ -55,6 +56,7 @@ class Usuario < ApplicationRecord
   private
 
   def after_initialize
+    self.administrador       = false if administrador.nil?
     self.activo_mapa_liberal = true if activo_mapa_liberal.nil?
   end
 end

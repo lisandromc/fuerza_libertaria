@@ -1,0 +1,31 @@
+<%= render 'common/navbar' %>
+
+<div class="container">
+  <div class="content">
+    <h1 class="title" style="margin-top: 20px">Administrar Usuarios</h1>
+    <hr />
+
+    <table class="table is-bordered is-striped is-narrow is-fullwidth">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>DNI</th>
+          <th>Email</th>
+          <th>Domicilio</th>
+          <th>Localidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @usuarios.each do |usuario| %>
+          <tr>
+            <td><%= usuario.nombre %></td>
+            <td><%= usuario.dni %></td>
+            <td><%= usuario.email %></td>
+            <td><%= usuario.domicilio %></td>
+            <td><%= usuario.localidad %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

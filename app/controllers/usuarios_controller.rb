@@ -1,6 +1,17 @@
 require 'securerandom'
 
 class UsuariosController < ApplicationController
+  PERMISO_DENEGADO = 'No tienes permisos para realizar esta acción.'
+
+  def index
+    if !sesion_iniciada? || !usuario_actual.administrador
+      redirect_to root_path, alert: PERMISO_DENEGADO
+    else
+      @usuarios = Usuario.order(:nombre).all
+      render 'index'
+    end
+  end
+
   def new
     @usuario = Usuario.new
   end
@@ -18,7 +29,7 @@ class UsuariosController < ApplicationController
 
   def edit
     if !sesion_iniciada? || usuario_actual.id.to_s != params[:id]
-      redirect_to root_path, alert: 'No tienes permisos para realizar esta acción.'
+      redirect_to root_path, alert: PERMISO_DENEGADO
     else
       @usuario = Usuario.find(params[:id])
       render 'edit'
@@ -27,7 +38,7 @@ class UsuariosController < ApplicationController
 
   def update
     if !sesion_iniciada? || usuario_actual.id.to_s != params[:id]
-      redirect_to root_path, alert: 'No tienes permisos para realizar esta acción.'
+      redirect_to root_path, alert: PERMISO_DENEGADO
     else
       @usuario = Usuario.find(params[:id])
       if @usuario.update(usuario_params)
