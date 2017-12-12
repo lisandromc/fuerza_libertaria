@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/', to: 'inicio#landing'
   get 'mapa_liberal', to: 'inicio#mapa_liberal'
   get 'comunicacion', to: 'inicio#comunicacion'
+  get 'principios', to: 'inicio#principios'
   get 'unirme', to: 'usuarios#new'
 
   post 'sesion/iniciar'
