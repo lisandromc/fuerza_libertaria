@@ -76,7 +76,6 @@ GEM
     geocoder (1.4.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    gmaps4rails (2.1.2)
     gon (6.1.0)
       actionpack (>= 3.0)
       json
@@ -202,7 +201,6 @@ DEPENDENCIES
   capistrano-rbenv (= 2.1.1)
   coffee-rails (~> 4.2)
   geocoder (= 1.4.4)
-  gmaps4rails (= 2.1.2)
   gon (= 6.1.0)
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)
