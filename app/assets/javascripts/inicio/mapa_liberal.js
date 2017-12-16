@@ -1,8 +1,10 @@
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
-    center: { lat: -37.1833, lng: -67.3667 }
+    center: { lat: -40, lng: -66 }
   });
+
+  $('#map').css('height', $(window).height() - $('nav.navbar').height());
 
   serverExports.usuarios.forEach(function(usuario) {
     var marker = new google.maps.Marker({
