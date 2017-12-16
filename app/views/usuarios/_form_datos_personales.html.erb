@@ -1,0 +1,93 @@
+<div class="columns">
+  <div class="column">
+    <div class="field">
+      <label class="label">Nombre*</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:nombre, class: 'input', required: true, placeholder: 'Nombre') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:nombre].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:nombre].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">Email*</label>
+      <div class="control has-icons-left">
+        <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:email].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">DNI</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:dni, class: 'input', pattern: '[0-9]{7,8}',placeholder: 'DNI') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-card-o"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:dni].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:dni].join(', ') %></li>
+      <% end %>
+    </div>
+    <% if @usuario.new_record? %>
+      <div class="field">
+        <label class="label">Password*</label>
+        <div class="control has-icons-left">
+          <%= f.password_field(:password, class: 'input', required: true, placeholder: 'Password') %>
+          <span class="icon is-small is-left">
+            <i class="fa fa-unlock-alt"></i>
+          </span>
+        </div>
+        <% if @usuario.errors[:password].any? %>
+          <li class="help is-danger"><%= @usuario.errors[:password].join(', ') %></li>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Domicilio</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:domicilio, class: 'input', placeholder: 'Domicilio') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-home"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:domicilio].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:domicilio].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">Localidad*</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:localidad, class: 'input', required: true, placeholder: 'Localidad') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-map-marker"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:localidad].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:localidad].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">Móvil</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:movil, class: 'input', placeholder: 'Móvil') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-mobile"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="help">
+  - El DNI y Domicilio son opcionales para unirte al grupo, pero necesarios para la presentación de adherentes en la
+  Junta Electora, paso requerido para la personería jurídica del partido político.<br />
+</p>

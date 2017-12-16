@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211051320) do
+ActiveRecord::Schema.define(version: 20171216044726) do
 
   create_table "usuarios", force: :cascade do |t|
     t.string "email", null: false
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20171211051320) do
     t.string "reset_token"
     t.datetime "reset_token_expire"
     t.boolean "administrador", null: false
+    t.boolean "nombre_publico", null: false
+    t.boolean "email_publico", null: false
+    t.boolean "movil_publico", null: false
+    t.boolean "profesion_publico", null: false
+    t.boolean "areas_conocimiento_publico", null: false
+    t.boolean "usuario_slack_publico", null: false
+    t.boolean "perfil_facebook_publico", null: false
+    t.string "usuario_slack"
+    t.string "perfil_facebook"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["nombre"], name: "index_usuarios_on_nombre"
   end

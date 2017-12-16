@@ -3,6 +3,7 @@ require 'csv'
 class Usuario < ApplicationRecord
   validates :nombre, :email, :localidad, presence: true
 
+  validates :administrador, inclusion: [true, false]
   validates :nombre, uniqueness: true, length: { maximum: 50 }
   validates :dni, numericality: { only_integer: true, greater_than: 0, less_than: 60_000_000, allow_nil: true }
   validates :email, uniqueness: true, length: { maximum: 50 }
@@ -11,7 +12,15 @@ class Usuario < ApplicationRecord
   validates :localidad, length: { maximum: 100 }
   validates :profesion, length: { maximum: 50 }
   validates :areas_conocimiento, length: { maximum: 100 }
-  validates :administrador, inclusion: [true, false]
+  validates :usuario_slack, length: { maximum: 40 }
+  validates :perfil_facebook, length: { maximum: 60 }
+  validates :nombre_publico, inclusion: [true, false]
+  validates :email_publico, inclusion: [true, false]
+  validates :movil_publico, inclusion: [true, false]
+  validates :profesion_publico, inclusion: [true, false]
+  validates :areas_conocimiento_publico, inclusion: [true, false]
+  validates :usuario_slack_publico, inclusion: [true, false]
+  validates :perfil_facebook_publico, inclusion: [true, false]
 
   has_secure_password validations: false
   has_secure_token :reset_token
@@ -37,6 +46,10 @@ class Usuario < ApplicationRecord
     activo_mapa_liberal && latitude.present? && longitude.present?
   end
 
+  def location
+    { lat: latitude, lng: longitude }
+  end
+
   def self.importar_afiliados
     CSV.parse(File.read('afiliados.csv')).each do |record|
       Usuario.create(email: record[1], nombre: record[2], domicilio: record[4], localidad: record[5], movil: record[6])
@@ -50,7 +63,7 @@ class Usuario < ApplicationRecord
   end
 
   def self.map_locations_json
-    Usuario.all.select(&:localizar_en_mapa?).map { |usuario| { lat: usuario.latitude, lng: usuario.longitude } }
+    Usuario.all.select(&:localizar_en_mapa?).map(&:location)
   end
 
   private

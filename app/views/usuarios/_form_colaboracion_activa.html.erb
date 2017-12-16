@@ -1,0 +1,97 @@
+<div class="columns">
+  <div class="column">
+    <div class="field">
+      <label class="label">Usuario de Slack</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:usuario_slack, class: 'input', placeholder: 'Usuario de Slack') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-slack"></i>
+        </span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Perfil de Facebook</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:perfil_facebook, class: 'input', placeholder: 'Perfil de Facebook') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-facebook"></i>
+        </span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Profesión</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:profesion, class: 'input', placeholder: 'Profesión') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-briefcase"></i>
+        </span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Áreas de conocimiento</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:areas_conocimiento, class: 'input', placeholder: 'Tecnología, marketing, marketing') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-eye"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Configuración del Mapa Liberal</label>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:activo_mapa_liberal) %>
+          Quiero aparecer en el mapa
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:nombre_publico) %>
+          Mostrar mi nombre
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:email_publico) %>
+          Mostrar mi email
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:movil_publico) %>
+          Mostrar mi móvil
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:usuario_slack_publico) %>
+          Mostrar mi usuario de Slack
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:perfil_facebook_publico) %>
+          Mostrar mi perfil de Facebook
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:profesion_publico) %>
+          Mostrar mi profesión
+        </label>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <%= f.check_box(:areas_conocimiento_publico) %>
+          Mostrar mis áreas de conocimiento
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="help">
+  - Profesión y áreas de conocimiento son opcionales, pero nos ayudarán a saber con que habilidades cuentas para
+  colaborar activamente.
+</p>
