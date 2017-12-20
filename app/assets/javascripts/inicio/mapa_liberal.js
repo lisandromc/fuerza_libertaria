@@ -9,7 +9,9 @@ function initMap() {
   serverExports.usuarios.forEach(function(usuario) {
     var marker = new google.maps.Marker({
       position: usuario.location,
-      map: map
+      map: map,
+      icon: usuario.icon,
+      title: usuario.title
     });
 
     if (usuario.infoWindow) {
@@ -21,13 +23,5 @@ function initMap() {
         infowindow.open(map, marker);
       });
     }
-
-    // myMarker = new google.maps.Marker({
-    //   position: serverExports.myLocation,
-    //   map: map,
-    //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    //   zIndex: 10000
-    // });
-
   })
 }

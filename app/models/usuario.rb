@@ -50,6 +50,11 @@ class Usuario < ApplicationRecord
     { lat: latitude, lng: longitude }
   end
 
+  def any_public_data?
+    nombre_publico || email_publico || movil_publico || profesion_publico ||
+      areas_conocimiento_publico || usuario_slack_publico || perfil_facebook_publico
+  end
+
   def self.importar_afiliados
     CSV.parse(File.read('afiliados.csv')).each do |record|
       Usuario.create(email: record[1], nombre: record[2], domicilio: record[4], localidad: record[5], movil: record[6])
