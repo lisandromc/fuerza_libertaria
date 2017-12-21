@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'comunicacion', to: 'inicio#comunicacion'
   get 'principios', to: 'inicio#principios'
   get 'unirme', to: 'usuarios#new'
+  get 'preguntas_frecuentes', to: 'inicio#preguntas_frecuentes'
 
   post 'sesion/iniciar'
   get 'sesion/cerrar'
