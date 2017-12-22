@@ -21,12 +21,22 @@
         <a href="<%= mapa_liberal_path %>" class="navbar-item">
           <i class="fa fa-globe"></i>&nbsp;Mapa Liberal
         </a>
-        <a href="<%= principios_path %>" class="navbar-item">
-          <i class="fa fa-balance-scale"></i>&nbsp;Principios
-        </a>
-        <%# <a href="https://www.facebook.com/groups/137682480320087/" target="_blank" class="navbar-item"> %>
-        <%#   <i class="fa fa-facebook-square"></i>&nbsp;Facebook %>
-        <%# </a> %>
+        <div href="#" class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <i class="fa fa-info-circle"></i>&nbsp;Información
+          </a>
+          <div class="navbar-dropdown">
+            <a href="<%= preguntas_frecuentes_path %>" class="navbar-item">
+              <i class="fa fa-question-circle"></i>&nbsp;Preguntas frecuentes
+            </a>
+            <a href="<%= principios_path %>" class="navbar-item">
+              <i class="fa fa-balance-scale"></i>&nbsp;Principios del grupo
+            </a>
+            <a href="https://www.facebook.com/proyectopartidolibertario/" class="navbar-item">
+              <i class="fa fa-facebook-square"></i>&nbsp;Proyecto Partido Libertario
+            </a>
+          </div>
+        </div>
         <% if usuario_actual %>
           <div href="#" class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
