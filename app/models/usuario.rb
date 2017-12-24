@@ -47,7 +47,15 @@ class Usuario < ApplicationRecord
   end
 
   def location
-    { lat: latitude, lng: longitude }
+    { lat: obscure_latitude, lng: obscure_longitude }
+  end
+
+  def obscure_latitude(kms = 1)
+    latitude + rand(0..(1 / Geocoder::Calculations.latitude_degree_distance(:km) * kms)) * [1, -1].sample
+  end
+
+  def obscure_longitude(kms = 1)
+    longitude - rand(0..(1 / Geocoder::Calculations.longitude_degree_distance(latitude, :km) * kms))
   end
 
   def any_public_data?
