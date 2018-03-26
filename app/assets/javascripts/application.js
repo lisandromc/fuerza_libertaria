@@ -3,6 +3,11 @@
 //= require_tree .
 
 $(function() {
+  $('.navbar-burger').on('click', function() {
+    console.log('aca');
+    $('.navbar-menu').toggleClass('is-active');
+  });
+
   $('a#reset_password_by_email').on('click', function() {
     data = { email: $('input#iniciar_sesion_email').val() }
     if (!data.email)
