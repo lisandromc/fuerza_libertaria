@@ -49,17 +49,17 @@
             </a>
             <div class="navbar-dropdown">
               <a href="<%= edit_usuario_path(usuario_actual) %>" class="navbar-item">
-                Editar perfil
+                <i class="fa fa-pencil"></i>&nbsp;Editar perfil
               </a>
               <hr class="navbar-divider">
               <% if usuario_actual.administrador %>
                 <a href="<%= usuarios_path %>" class="navbar-item">
-                  Administrar usuarios
+                  <i class="fa fa-wrench"></i>&nbsp;Administrar usuarios
                 </a>
                 <hr class="navbar-divider"/>
               <% end %>
               <a href="<%= sesion_cerrar_path %>" class="navbar-item">
-                Cerrar sesión
+                <i class="fa fa-sign-out"></i>&nbsp;Cerrar sesión
               </a>
             </div>
           </div>
