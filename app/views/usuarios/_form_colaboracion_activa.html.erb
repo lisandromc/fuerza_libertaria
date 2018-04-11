@@ -3,38 +3,50 @@
     <div class="field">
       <label class="label">Usuario de Slack</label>
       <div class="control has-icons-left">
-        <%= f.text_field(:usuario_slack, class: 'input', placeholder: 'Usuario de Slack') %>
+        <%= f.text_field(:usuario_slack, class: 'input', maxlength: 40, placeholder: 'Usuario de Slack') %>
         <span class="icon is-small is-left">
           <i class="fa fa-slack"></i>
         </span>
       </div>
+      <% if @usuario.errors[:usuario_slack].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:usuario_slack].join(', ') %></li>
+      <% end %>
     </div>
     <div class="field">
       <label class="label">Perfil de Facebook</label>
       <div class="control has-icons-left">
-        <%= f.text_field(:perfil_facebook, class: 'input', placeholder: 'Perfil de Facebook') %>
+        <%= f.text_field(:perfil_facebook, class: 'input', maxlength: 60, placeholder: 'Perfil de Facebook') %>
         <span class="icon is-small is-left">
           <i class="fa fa-facebook"></i>
         </span>
       </div>
+      <% if @usuario.errors[:perfil_facebook].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:perfil_facebook].join(', ') %></li>
+      <% end %>
     </div>
     <div class="field">
       <label class="label">Profesión</label>
       <div class="control has-icons-left">
-        <%= f.text_field(:profesion, class: 'input', placeholder: 'Profesión') %>
+        <%= f.text_field(:profesion, class: 'input', maxlength: 50, placeholder: 'Profesión') %>
         <span class="icon is-small is-left">
           <i class="fa fa-briefcase"></i>
         </span>
       </div>
+      <% if @usuario.errors[:profesion].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:profesion].join(', ') %></li>
+      <% end %>
     </div>
     <div class="field">
       <label class="label">Áreas de conocimiento</label>
       <div class="control has-icons-left">
-        <%= f.text_field(:areas_conocimiento, class: 'input', placeholder: 'Tecnología, marketing, marketing') %>
+        <%= f.text_field(:areas_conocimiento, class: 'input', maxlength: 100, placeholder: 'Tecnología, marketing, marketing') %>
         <span class="icon is-small is-left">
           <i class="fa fa-eye"></i>
         </span>
       </div>
+      <% if @usuario.errors[:areas_conocimiento].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:areas_conocimiento].join(', ') %></li>
+      <% end %>
     </div>
   </div>
   <div class="column">
