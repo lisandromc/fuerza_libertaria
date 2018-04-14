@@ -94,5 +94,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.rails_semantic_logger.format = :json
+  config.rails_semantic_logger.add_file_appender = false
+  config.semantic_logger.add_appender(file_name: 'log/production.log', formatter: :json)
 end
