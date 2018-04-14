@@ -41,6 +41,7 @@ GEM
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
+    awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
@@ -132,6 +133,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_semantic_logger (4.2.1)
+      rails (>= 3.2)
+      semantic_logger (~> 4.1)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -155,6 +159,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    semantic_logger (4.2.1)
+      concurrent-ruby (~> 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -193,6 +199,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print (= 1.8.0)
   bcrypt (= 3.1.11)
   bulma-rails (~> 0.6.1)
   byebug
@@ -207,6 +214,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rails_semantic_logger (= 4.2.1)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
