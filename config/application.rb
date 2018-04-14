@@ -29,8 +29,5 @@ module FuerzaLibertaria
     config.generators.system_tests = nil
 
     config.i18n.default_locale = 'es-AR'
-
-    config.rails_semantic_logger.add_file_appender = false
-    config.semantic_logger.add_appender(file_name: "log/#{Rails.env}.json", formatter: :json)
   end
 end
