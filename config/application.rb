@@ -29,9 +29,5 @@ module FuerzaLibertaria
     config.generators.system_tests = nil
 
     config.i18n.default_locale = 'es-AR'
-
-    config.lograge.enabled = true
-
-    config.lograge.formatter = Lograge::Formatters::Json.new
   end
 end
