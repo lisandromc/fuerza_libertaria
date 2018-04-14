@@ -93,4 +93,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.rails_semantic_logger.semantic   = true
+  config.rails_semantic_logger.started    = false
+  config.rails_semantic_logger.processing = false
+  config.rails_semantic_logger.rendered   = false
 end
