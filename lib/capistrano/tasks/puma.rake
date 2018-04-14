@@ -43,6 +43,8 @@ namespace :puma do
               execute :pumactl, "--pidfile #{fetch(:puma_pid)} -F #{fetch(:puma_conf)} #{command}"
             end
           else
+            puts '** WARNING **'
+            puts 'Puma is not running or not detected'
             invoke 'puma:start'
           end
         end
