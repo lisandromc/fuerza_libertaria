@@ -16,6 +16,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative "../app/lib/logger/custom_formatter"
+
 module FuerzaLibertaria
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -31,6 +33,6 @@ module FuerzaLibertaria
     config.i18n.default_locale = 'es-AR'
 
     config.rails_semantic_logger.add_file_appender = false
-    config.semantic_logger.add_appender(file_name: "log/#{Rails.env}.json", formatter: :json)
+    config.semantic_logger.add_appender(file_name: "log/#{Rails.env}.json", formatter: Logger::CustomFormatter.new)
   end
 end
