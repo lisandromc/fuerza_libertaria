@@ -21,7 +21,7 @@ $navbar-height: 5rem;
 // $navbar-item-img-max-height: 4.4rem;
 
 @import "bulma";
-@import "bulma-carousel";
+@import "bulma-carousel.min";
 
 nav.navbar {
   border-bottom: 1px solid black;
