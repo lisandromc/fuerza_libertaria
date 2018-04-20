@@ -1,5 +1,34 @@
 <%= render 'common/navbar' %>
-<%= render 'common/header', subtitle: 'Manifiesto del grupo' %>
+
+<section class="hero is-medium has-carousel">
+  <div class="hero-carousel carousel-animated carousel-animate-fade" data-autoplay="true">
+    <div class='carousel-container'>
+      <div class='carousel-item has-background is-active'>
+        <%= image_tag('landing/banner1.jpg', class: 'is-background') %>
+      </div>
+      <div class='carousel-item has-background'>
+        <%= image_tag('landing/banner2.jpg', class: 'is-background') %>
+      </div>
+      <div class='carousel-item has-background'>
+        <%= image_tag('landing/banner3.jpg', class: 'is-background') %>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-left pull-left margen">
+      <h1 class="title">
+        Es hora de hacer algo por nuestro País..
+      </h1>
+      <h2 class="subtitle">
+        Llegó el momento de elegir entre nuestro futuro..<br>o seguir sosteniendo parásitos.
+      </h2>
+      <h3 class="subtitle">
+        Unite al movimiento que puede cambiar<br>el rumbo de La Argentina.<br>
+      </h3>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">

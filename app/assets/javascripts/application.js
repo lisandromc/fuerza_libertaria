@@ -1,5 +1,6 @@
 //= require jquery3
 //= require rails-ujs
+//= require bulma-carousel
 //= require_tree .
 
 $(function() {

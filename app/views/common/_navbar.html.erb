@@ -1,8 +1,8 @@
-<nav class="navbar is-fixed-top is-warning" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="/"=>
-        Fuerza Libertaria
+        <%= image_tag('navbar/fuerza_libertaria.png', alt: 'Fuerza Libertaria') %>
       </a>
       <div class="navbar-burger">
         <span></span>
@@ -12,9 +12,6 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-end">
-        <a href="/" class="navbar-item">
-          <i class="fa fa-book"></i>&nbsp;Manifiesto
-        </a>
         <% unless usuario_actual %>
           <a href="<%= unirme_path %>" class="navbar-item">
             <i class="fa fa-user-plus"></i>&nbsp;Unirme
@@ -36,16 +33,6 @@
             </a>
             <a href="<%= principios_path %>" class="navbar-item">
               <i class="fa fa-balance-scale"></i>&nbsp;Principios del grupo
-            </a>
-            <hr class="navbar-divider"/>
-            <a href="https://twitter.com/fuerzalib" class="navbar-item">
-              <i class="fa fa-twitter"></i>&nbsp;Seguinos en Twitter
-            </a>
-            <a href="https://www.instagram.com/fuerzalib/" class="navbar-item">
-              <i class="fa fa-instagram"></i>&nbsp;Seguinos en Instagram
-            </a>
-            <a href="https://www.facebook.com/proyectopartidolibertario/" class="navbar-item">
-              <i class="fa fa-facebook-square"></i>&nbsp;Comunidad en Facebook
             </a>
           </div>
         </div>
@@ -112,6 +99,18 @@
             </div>
           </div>
         <% end %>
+        <a href="https://twitter.com/fuerzalib" class="navbar-item social-media" title="Seguinos en twitter">
+          <%# <i class="fa fa-twitter"></i> %>
+          <%= image_tag('navbar/icon-twitter.png') %>
+        </a>
+        <a href="https://www.facebook.com/proyectopartidolibertario/" class="navbar-item social-media" title="Seguinos en Facebook">
+          <%= image_tag('navbar/icon-facebook.png') %>
+          <%# <i class="fa fa-facebook-square"></i> %>
+        </a>
+        <a href="https://www.instagram.com/fuerzalib/" class="navbar-item social-media" title="Seguinos en instagram">
+          <%# <i class="fa fa-instagram"></i> %>
+          <%= image_tag('navbar/icon-instagram.png') %>
+        </a>
       </div>
     </div>
   </div>
