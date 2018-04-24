@@ -1,0 +1,53 @@
+module Lookups::Provincias
+  CAPITAL_FEDERAL = 0
+  BUENOS_AIRES    = 1
+  CATAMARA        = 2
+  CORDOBA         = 3
+  CORRIENTES      = 4
+  ENTRE_RIOS      = 5
+  JUJUY           = 6
+  MENDOZA         = 7
+  LA_RIOJA        = 8
+  SALTA           = 9
+  SAN_JUAN        = 10
+  SAN_LUIS        = 11
+  SANTA_FE        = 12
+  SANTIAGO_ESTERO = 13
+  TUCUMAN         = 14
+  CHACO           = 16
+  CHUBUT          = 17
+  FORMOSA         = 18
+  MISIONES        = 19
+  NEUQUEN         = 20
+  LA_PAMPA        = 21
+  RIO_NEGRO       = 22
+  SANTA_CRUZ      = 23
+  TIERRA_FUEGO    = 24
+
+  PRINTABLE = {
+    CAPITAL_FEDERAL => 'Capital Federal',
+    BUENOS_AIRES    => 'Buenos Aires',
+    CATAMARA        => 'Catamara',
+    CORDOBA         => 'Córdoba',
+    CORRIENTES      => 'Corrientes',
+    ENTRE_RIOS      => 'Entre Ríos',
+    JUJUY           => 'Jujuy',
+    MENDOZA         => 'Mendoza',
+    LA_RIOJA        => 'La Rioja',
+    SALTA           => 'Salta',
+    SAN_JUAN        => 'San Juan',
+    SAN_LUIS        => 'San Luis',
+    SANTA_FE        => 'Santa Fé',
+    SANTIAGO_ESTERO => 'Santiago del Estero',
+    TUCUMAN         => 'Tucumán',
+    CHACO           => 'Chaco',
+    CHUBUT          => 'Chubut',
+    FORMOSA         => 'Formosa',
+    MISIONES        => 'Misiones',
+    NEUQUEN         => 'Neuquén',
+    LA_PAMPA        => 'La Pampa',
+    RIO_NEGRO       => 'Río Negro',
+    SANTA_CRUZ      => 'Santa Cruz',
+    TIERRA_FUEGO    => 'Tierra del Fuego'
+  }.freeze
+end

@@ -25,6 +25,30 @@
       <% end %>
     </div>
     <div class="field">
+      <label class="label">Perfil de Twitter</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:perfil_twitter, class: 'input', maxlength: 60, placeholder: 'Perfil de Twitter') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-twitter"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:perfil_twitter].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:perfil_twitter].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">Perfil de Instagram</label>
+      <div class="control has-icons-left">
+        <%= f.text_field(:perfil_instagram, class: 'input', maxlength: 60, placeholder: 'Perfil de Instagram') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-instagram"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:perfil_instagram].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:perfil_instagram].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
       <label class="label">Profesión</label>
       <div class="control has-icons-left">
         <%= f.text_field(:profesion, class: 'input', maxlength: 50, placeholder: 'Profesión') %>

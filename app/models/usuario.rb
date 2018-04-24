@@ -10,10 +10,14 @@ class Usuario < ApplicationRecord
   validates :movil, length: { maximum: 30 }
   validates :domicilio, length: { maximum: 50 }
   validates :localidad, length: { maximum: 100 }
+  validates :provincia_id,
+    inclusion: { in: Lookups::Provincias::CAPITAL_FEDERAL..Lookups::Provincias::TIERRA_FUEGO }, allow_blank: true
   validates :profesion, length: { maximum: 50 }
   validates :areas_conocimiento, length: { maximum: 100 }
   validates :usuario_slack, length: { maximum: 40 }
   validates :perfil_facebook, length: { maximum: 60 }
+  validates :perfil_instagram, length: { maximum: 60 }
+  validates :perfil_twitter, length: { maximum: 60 }
   validates :nombre_publico, inclusion: [true, false]
   validates :email_publico, inclusion: [true, false]
   validates :movil_publico, inclusion: [true, false]
@@ -37,7 +41,7 @@ class Usuario < ApplicationRecord
   end
 
   def geolocate
-    if response = Geocoder.search("#{domicilio}, #{localidad}, Argentina")[0]
+    if response = Geocoder.search("#{domicilio}, #{localidad}, #{provincia}, Argentina")[0]
       update(latitude: response.coordinates[0], longitude: response.coordinates[1])
     end
   end
@@ -53,6 +57,10 @@ class Usuario < ApplicationRecord
   def any_public_data?
     nombre_publico || email_publico || movil_publico || profesion_publico ||
       areas_conocimiento_publico || usuario_slack_publico || perfil_facebook_publico
+  end
+
+  def provincia
+    Lookups::Provincias::PRINTABLE[provincia_id] if provincia_id
   end
 
   def self.importar_afiliados

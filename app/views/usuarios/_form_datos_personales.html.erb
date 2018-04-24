@@ -13,18 +13,6 @@
       <% end %>
     </div>
     <div class="field">
-      <label class="label">Email*</label>
-      <div class="control has-icons-left">
-        <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
-        <span class="icon is-small is-left">
-          <i class="fa fa-envelope"></i>
-        </span>
-      </div>
-      <% if @usuario.errors[:email].any? %>
-        <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
-      <% end %>
-    </div>
-    <div class="field">
       <label class="label">DNI</label>
       <div class="control has-icons-left">
         <%= f.text_field(:dni, class: 'input', pattern: '[0-9]{7,8}', placeholder: 'DNI') %>
@@ -34,6 +22,30 @@
       </div>
       <% if @usuario.errors[:dni].any? %>
         <li class="help is-danger"><%= @usuario.errors[:dni].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">Fecha nacimiento</label>
+      <div class="control has-icons-left">
+        <%= f.date_field(:fecha_nacimiento, class: 'input') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-birthday-cake"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:fecha_nacimiento].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:fecha_nacimiento].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
+      <label class="label">Email*</label>
+      <div class="control has-icons-left">
+        <%= f.email_field(:email, class: 'input', required: true, placeholder: 'Email') %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:email].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:email].join(', ') %></li>
       <% end %>
     </div>
     <% if @usuario.new_record? %>
@@ -77,6 +89,20 @@
       <% end %>
     </div>
     <div class="field">
+      <label class="label">Provincia</label>
+      <div class="control has-icons-left">
+        <div class="select is-fullwidth">
+          <%= f.select(:provincia_id, Lookups::Provincias::PRINTABLE.map { |id, str| [str, id] }, { include_blank: true }) %>
+        </div>
+        <span class="icon is-small is-left">
+          <i class="fa fa-globe"></i>
+        </span>
+      </div>
+      <% if @usuario.errors[:provincia_id].any? %>
+        <li class="help is-danger"><%= @usuario.errors[:provincia_id].join(', ') %></li>
+      <% end %>
+    </div>
+    <div class="field">
       <label class="label">Móvil</label>
       <div class="control has-icons-left">
         <%= f.text_field(:movil, class: 'input', placeholder: 'Móvil') %>
@@ -87,7 +113,3 @@
     </div>
   </div>
 </div>
-<p class="help">
-  - El DNI y Domicilio son opcionales para unirte al grupo, pero necesarios para la presentación de adherentes en la
-  Junta Electoral, paso requerido para la personería jurídica del partido político.<br />
-</p>
