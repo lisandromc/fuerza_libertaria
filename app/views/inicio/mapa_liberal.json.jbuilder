@@ -5,6 +5,12 @@ json.usuarios Usuario.select(&:localizar_en_mapa?) do |usuario|
     if usuario == usuario_actual
       json.title 'Yo'
       json.icon 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+    elsif usuario.coordinador
+      json.title 'Coordinador de Provincia'
+      json.icon 'http://maps.google.com/mapfiles/ms/icons/black-dot.png'
+    elsif usuario.referente
+      json.title 'Referente'
+      json.icon 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
     elsif usuario.any_public_data?
       json.title 'Liberal'
       json.icon 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'

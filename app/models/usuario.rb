@@ -12,6 +12,8 @@ class Usuario < ApplicationRecord
   validates :localidad, length: { maximum: 100 }
   validates :provincia_id,
     inclusion: { in: Lookups::Provincias::CAPITAL_FEDERAL..Lookups::Provincias::TIERRA_FUEGO }, allow_blank: true
+  validates :coordinador, inclusion: [true, false]
+  validates :referente, inclusion: [true, false]
   validates :profesion, length: { maximum: 50 }
   validates :areas_conocimiento, length: { maximum: 100 }
   validates :usuario_slack, length: { maximum: 40 }
@@ -29,8 +31,6 @@ class Usuario < ApplicationRecord
   has_secure_password validations: false
   has_secure_token :reset_token
 
-  after_initialize :after_initialize
-
   def prepare_reset_token
     regenerate_reset_token
     update_attribute(:reset_token_expire, 2.hour.from_now)
@@ -47,7 +47,7 @@ class Usuario < ApplicationRecord
   end
 
   def localizar_en_mapa?
-    activo_mapa_liberal && latitude.present? && longitude.present?
+    (coordinador || referente || activo_mapa_liberal) && latitude.present? && longitude.present?
   end
 
   def location
@@ -57,6 +57,26 @@ class Usuario < ApplicationRecord
   def any_public_data?
     nombre_publico || email_publico || movil_publico || profesion_publico ||
       areas_conocimiento_publico || usuario_slack_publico || perfil_facebook_publico
+  end
+
+  def nombre_publico?
+    coordinador || referente || nombre_publico
+  end
+
+  def email_publico?
+    coordinador || referente || email_publico
+  end
+
+  def movil_publico?
+    coordinador || referente || movil_publico
+  end
+
+  def perfil_facebook_publico?
+    coordinador || referente || perfil_facebook_publico
+  end
+
+  def perfil_slack_publico?
+    coordinador || referente || perfil_slack_publico
   end
 
   def provincia
@@ -81,8 +101,10 @@ class Usuario < ApplicationRecord
 
   private
 
-  def after_initialize
+  after_initialize do
     self.administrador       = false if administrador.nil?
     self.activo_mapa_liberal = true if activo_mapa_liberal.nil?
+    self.coordinador         = false if coordinador.nil?
+    self.referente           = false if referente.nil?
   end
 end

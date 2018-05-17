@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422225428) do
+ActiveRecord::Schema.define(version: 20180517215408) do
+
+  create_table "noticias", force: :cascade do |t|
+    t.string "titulo"
+    t.text "entradilla"
+    t.string "autor"
+    t.date "fecha_publicacion"
+    t.boolean "publicada"
+    t.text "cuerpo_markdown"
+    t.text "cuerpo_html"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string "email", null: false
@@ -43,6 +55,8 @@ ActiveRecord::Schema.define(version: 20180422225428) do
     t.date "fecha_nacimiento"
     t.string "perfil_instagram"
     t.string "perfil_twitter"
+    t.boolean "coordinador", null: false
+    t.boolean "referente", null: false
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["nombre"], name: "index_usuarios_on_nombre"
   end
