@@ -14,6 +14,7 @@ gem 'bulma-rails', '~> 0.6.1'
 gem 'bcrypt', '3.1.11'
 gem 'awesome_print', '1.8.0'
 gem 'rails_semantic_logger', '4.2.1'
+gem 'font-awesome-rails', '4.7.0.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
