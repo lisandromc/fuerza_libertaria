@@ -1,13 +1,11 @@
 <%= render 'common/navbar' %>
 
-<div class="container">
+<div class="container is-fluid">
   <div class="content">
-    <h1 class="title" style="margin-top: 20px">Administrar Usuarios</h1>
-    <hr />
-
-    <table class="table is-bordered is-striped is-narrow is-fullwidth">
+    <table class="table is-size-7 is-bordered is-striped is-narrow is-fullwidth">
       <thead>
         <tr>
+          <th></th>
           <th>Nombre</th>
           <th>DNI</th>
           <th>Email</th>
@@ -15,17 +13,41 @@
           <th>Domicilio</th>
           <th>Localidad</th>
           <th>Provincia</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @usuarios.each do |usuario| %>
           <tr>
+            <td class="status has-text-centered">
+              <i class="fa fa-star coordinador <%= 'is-hidden' unless usuario.coordinador %>" title="Coordinador"></i>
+              <i class="fa fa-handshake-o referente <%= 'is-hidden' unless usuario.referente %>" title="Referente"></i>
+            </td>
             <td><%= usuario.nombre %></td>
             <td><%= usuario.dni %></td>
             <td><%= usuario.email %></td>
             <td><%= usuario.movil %></td>
             <td><%= usuario.domicilio %></td>
+            <td><%= usuario.localidad %></td>
             <td><%= usuario.provincia %></td>
+            <td class="acciones has-text-centered">
+              <% if usuario.coordinador || usuario.referente %>
+                <%= link_to(fa_icon('times'), usuario_path(usuario),
+                            remote: true, method: :patch, data: { params: '[usuario]referente=0&[usuario]coordinador=0' },
+                            title: 'Deshacer privilegios', class: 'remover_privilegios button is-primary is-small') %>
+              <% else %>
+                <% if !usuario.coordinador %>
+                  <%= link_to(fa_icon('star'), usuario_path(usuario),
+                              remote: true, method: :patch, data: { params: '[usuario]coordinador=1' },
+                              title: 'Privilegio coordinador', class: 'convertir_coordinador button is-primary is-small') %>
+                <% end %>
+                <% if !usuario.referente %>
+                  <%= link_to(fa_icon('handshake-o'), usuario_path(usuario),
+                              remote: true, method: :patch, data: { params: '[usuario]referente=1' },
+                              title: 'Privilegio referente', class: 'convertir_referente button is-primary is-small') %>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

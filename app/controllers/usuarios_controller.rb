@@ -37,14 +37,22 @@ class UsuariosController < ApplicationController
   end
 
   def update
-    if !sesion_iniciada? || usuario_actual.id.to_s != params[:id]
+    if !sesion_iniciada? || (!usuario_actual.administrador && usuario_actual.id.to_s != params[:id])
       redirect_to root_path, alert: PERMISO_DENEGADO
     else
       @usuario = Usuario.find(params[:id])
       if @usuario.update(usuario_params)
-        redirect_to edit_usuario_path(@usuario), notice: 'Perfil actualizado exitosamente.'
+        if request.xhr?
+          head :ok
+        else
+          redirect_to edit_usuario_path(@usuario), notice: 'Perfil actualizado exitosamente.'
+        end
       else
-        render 'edit'
+        if request.xhr?
+          render :unprocessable_entity, json: { errors: @usuario.errors }
+        else
+          render 'edit'
+        end
       end
     end
   end
@@ -82,10 +90,11 @@ class UsuariosController < ApplicationController
   private
 
   def usuario_params
-    params.require(:usuario).permit(:nombre, :dni, :email, :password, :movil, :domicilio, :localidad, :provincia_id,
-                                    :usuario_slack, :perfil_facebook, :perfil_twitter, :perfil_instagram, :profesion,
-                                    :areas_conocimiento, :activo_mapa_liberal, :nombre_publico, :email_publico,
-                                    :movil_publico, :usuario_slack_publico, :perfil_facebook_publico, :profesion_publico,
-                                    :areas_conocimiento_publico)
+    whitelist = [:nombre, :dni, :email, :password, :movil, :domicilio, :localidad, :provincia_id, :usuario_slack,
+                 :perfil_facebook, :perfil_twitter, :perfil_instagram, :profesion, :areas_conocimiento, :activo_mapa_liberal,
+                 :nombre_publico, :email_publico, :movil_publico, :usuario_slack_publico, :perfil_facebook_publico,
+                 :profesion_publico, :areas_conocimiento_publico]
+    whitelist << :coordinador << :referente if usuario_actual&.administrador
+    params.require(:usuario).permit(whitelist)
   end
 end

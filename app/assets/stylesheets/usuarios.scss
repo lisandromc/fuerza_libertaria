@@ -1,0 +1,9 @@
+body#usuarios_index {
+  table {
+    margin-top: 25px;
+  }
+
+  td.status, td.acciones {
+    white-space: nowrap;
+  }
+}
